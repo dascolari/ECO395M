@@ -43,13 +43,13 @@ mean_delay_season <- ggplot(abia_analysis) +
   geom_col(aes(x = day_portion, y = mean_delay), fill='#FDB580') +
   coord_flip() +
   facet_wrap(season~., ncol = 1) +
-  labs(y = "Average Delay", x = "", title = "Average Flight Delay by Scheduled Time of Day and Season")
+  labs(y = "Average Delay", x = "", title = "Average Flight Delay by Scheduled \n Time of Day and Season")
 
 total_cancel_season <- ggplot(abia_analysis) +
   geom_col(aes(x = day_portion,y = cancellations), fill = '#9980FD') +
   coord_flip() +
   facet_wrap(season~., ncol = 1) +
-  labs(y = "Total Cancellations", x = "", title = "Cancellations by Scheduled Time of Day and Season")
+  labs(y = "Total Cancellations", x = "", title = "Cancellations by Scheduled \n Time of Day and Season")
 
 season_sofly <- ggarrange(mean_delay_season, total_cancel_season)
 
