@@ -11,10 +11,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r source, echo=FALSE, results='hide', warning=FALSE, message=FALSE}
 # set user's unique path to the ECO395M directory
 # new users must edit here
-path <- "/Users/davidscolari/Dropbox/grad_school/3_Spring22/datmin"
+path <- "/Users/davidscolari/Dropbox/grad_school/3_Spring22/ECO395M"
 
 # make path to sub-directories
-path_data <- file.path(path, "ECO395M", "data")
+path_data <- file.path(path, "data")
 path_code <- file.path(path, "solutions", "code")
 path_out <- file.path(path, "solutions", "output")
 
