@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # ECO 395M: Exercises 1
 
 Due Friday, Feb 11 at 5 PM  
