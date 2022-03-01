@@ -2,7 +2,7 @@
 title: "Exercise 2"
 author: "David Scolari"
 date: "2/21/2022"
-output: html_document
+output: md_document
 ---
 <style>
     body { 
