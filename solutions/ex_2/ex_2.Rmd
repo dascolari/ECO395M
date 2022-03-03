@@ -2,7 +2,7 @@
 title: "Exercise 2"
 author: "David Scolari"
 date: "2/21/2022"
-output: md_document
+output: html_document
 ---
 <style>
     body { 
@@ -19,6 +19,11 @@ library(here)
 path <- here()
 source(file.path(path, "code", "lib.R"))
 source(file.path(path, "code", "ex_2_1.R"))
+```
+
+```{r boarding}
+boardings_hour
+boardings_temp
 ```
 
 ![CAPTION HERE: Give the figure an informative caption in which you explain what is shown in the figure and address the following questions, citing evidence from the figure. Does the hour of peak boardings change from day to day, or is it broadly similar across days? Why do you think average boardings on Mondays in September look lower, compared to other days and months? Similarly, why do you think average boardings on Weds/Thurs/Fri in November look lower?](`r file.path(path, "output", "boardings_hour.png")`)

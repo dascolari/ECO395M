@@ -6,7 +6,7 @@ capmetro <- read.csv(here(file.path("data", "raw", "capmetro_UT.csv")))
   # average boardings grouped by hour of the day
   # facet by day of week.
   # color by month
-capmetro %>% 
+boardings_hour <- capmetro %>% 
   group_by(hour_of_day, day_of_week, month) %>% 
   summarise(mean_boardings = mean(boarding), .groups = 'drop') %>% 
   mutate(day_num = case_when(day_of_week == "Sun" ~ 1, 
@@ -35,7 +35,8 @@ capmetro %>%
         strip.background = element_rect(fill = "#333333"),
         strip.text = element_text(color = "#FFFFFF"),
         panel.grid = element_line(color = "#696969"), 
-        text = element_text(color = "#FFFFFF"))
+        text = element_text(color = "#FFFFFF"), 
+        aspect.ratio = 2/18)
   
 
   # theme(plot.background = element_rect(fill = "black"),
@@ -43,16 +44,13 @@ capmetro %>%
   #       title = element_text(color = "white"))
 
 ggsave("boardings_hour.png", 
-       path = file.path(path, "output"), 
-       height = 20, 
-       width = 15, 
-       units = "cm", 
+       path = file.path(path, "output"),
        device = png)
 
 # panel of scatter plots showing boardings (y) vs. temperature (x) in each 15-minute window
   # faceted by hour of the day
   # colored according to whether it is a weekday or weekend
-capmetro %>% 
+boardings_temp <- capmetro %>% 
   ggplot() +
   geom_point(aes(x = temperature, y = boarding, color = weekend)) +
   facet_wrap(~hour_of_day) +
@@ -67,7 +65,8 @@ capmetro %>%
         strip.background = element_rect(fill = "#333333"),
         strip.text = element_text(color = "#FFFFFF"),
         panel.grid = element_line(color = "#696969"), 
-        text = element_text(color = "#FFFFFF"))
+        text = element_text(color = "#FFFFFF"), 
+        aspect.ratio = 1)
 
 ggsave("boardings_temp.png", 
        path = file.path(path, "output"), 
