@@ -129,7 +129,10 @@ roc <- validation %>%
             fdr = round(false_pos/sum(pos), 3), .groups = "drop") 
   
 roc_curve <- ggplot(roc) +
-  geom_line(aes(x = fpr, y = tpr, color = model))
+  geom_line(aes(x = fpr, y = tpr, color = model)) +
+  labs(x = "False Positive Rate", 
+       y = "True Positive Rate", 
+       title = "Reservation with Children ROC")
 
 set.seed(1134)
 hotels_val_20fold <- bind_cols(y = hotels_val$children, p_best = phat_val_best) %>%
@@ -159,7 +162,8 @@ ggplot() +
   facet_wrap(~fold_id) +
   theme(axis.text.x = element_blank(), 
         axis.ticks = element_blank(),
-        legend.title = element_blank())
+        legend.title = element_blank()) +
+  labs(title = "Children in 250 Reservations")
 
-hotels_val_20fold <- 
-  kable(hotels_val_20fold, caption = "Model Validation")
+hotels_20fold <- 
+  kable(hotels_val_20fold, caption = "20 Trials of 250 Reservations: Detailed Stats")

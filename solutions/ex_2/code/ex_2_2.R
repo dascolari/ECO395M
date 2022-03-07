@@ -26,7 +26,7 @@ set.seed(30)
 saratoga_folds <- SaratogaHouses %>%
   mutate(fold_id = rep(1:nfold, length=nrow(SaratogaHouses)) %>% sample)
 
-rmse_cv <- foreach(fold = 1:nfold, .combine='rbind') %dopar% {
+rmse_cv <- foreach(fold = 1:nfold, .combine='rbind') %do% {
  
   # filtering by fold_id according to the fold of current loop
   # assigns the 4 folds not equal to the current fold to train set
@@ -82,7 +82,7 @@ rmse_cv <- foreach(fold = 1:nfold, .combine='rbind') %dopar% {
                               fuel + centralAir)^2, direction = "both")
   
   # knn model specification
-  klist <- foreach(K = 2:100, .combine = 'rbind') %dopar%{
+  klist <- foreach(K = 2:100, .combine = 'rbind') %do%{
   knn <- knnreg(price ~ 
            lotSize + age + landValue + livingArea +
            pctCollege + bedrooms + fireplaces +
@@ -117,9 +117,5 @@ fit <- rmse_cv %>%
          k_optimal = ifelse(model != "knn", NA, k_optimal)) %>% 
   arrange(model) %>% 
   select(-m) %>% 
-  kable(caption = "Model Fit Comparison")
-
-fit
-
+  kable(caption = "Out of Sample Performance")
 ##########################################################
-
