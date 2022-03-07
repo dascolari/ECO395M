@@ -1,6 +1,6 @@
 library(gamlr)
 
-semiconductor = read.csv("../data/semiconductor.csv")
+semiconductor = read.csv(file.path(path, "../../data/semiconductor.csv"))
 n = nrow(semiconductor)
 
 ## full model

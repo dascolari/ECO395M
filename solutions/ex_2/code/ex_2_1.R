@@ -23,20 +23,22 @@ boardings_hour <- capmetro %>%
          month = fct_reorder(month, month_num)) %>% 
   ggplot() +
   geom_line(aes(x = hour_of_day, y = mean_boardings, color = month)) +
-  facet_wrap(~day_of_week, ncol = 1) +
+  facet_wrap(~day_of_week, ncol = 2) +
   xlab("Hour of Day") +
   ylab("Mean Boardings") +
   ggtitle("UT CapMetro Rides: Average Boardings by Hour") +
-  guides(color = guide_legend(NULL)) +
-  theme(plot.background = element_rect(fill = "#000000", color = "#000000"), 
-        panel.background = element_rect(fill = "#444444"), 
-        legend.background = element_rect(fill = "#333333"),
-        legend.key = element_rect(fill = "#333333"),
-        strip.background = element_rect(fill = "#333333"),
-        strip.text = element_text(color = "#FFFFFF"),
-        panel.grid = element_line(color = "#696969"), 
-        text = element_text(color = "#FFFFFF"), 
-        aspect.ratio = 2/18)
+  guides(color = guide_legend(NULL))
+ 
+#Save this black background theme for another use
+ # theme(plot.background = element_rect(fill = "#000000", color = "#000000"), 
+ #        panel.background = element_rect(fill = "#444444"), 
+ #        legend.background = element_rect(fill = "#333333"),
+ #        legend.key = element_rect(fill = "#333333"),
+ #        strip.background = element_rect(fill = "#333333"),
+ #        strip.text = element_text(color = "#FFFFFF"),
+ #        panel.grid = element_line(color = "#696969"), 
+ #        text = element_text(color = "#FFFFFF"), 
+ #        aspect.ratio = 2/18)
   
 
   # theme(plot.background = element_rect(fill = "black"),
@@ -57,16 +59,18 @@ boardings_temp <- capmetro %>%
   guides(color = guide_legend(NULL)) +
   xlab("Temperature") +
   ylab("Boardings") +
-  ggtitle("UT CapMetro Rides: Boardings by Temperature") +
-  theme(plot.background = element_rect(fill = "#000000", color = "#000000"), 
-        panel.background = element_rect(fill = "#444444"), 
-        legend.background = element_rect(fill = "#333333"),
-        legend.key = element_rect(fill = "#333333"),
-        strip.background = element_rect(fill = "#333333"),
-        strip.text = element_text(color = "#FFFFFF"),
-        panel.grid = element_line(color = "#696969"), 
-        text = element_text(color = "#FFFFFF"), 
-        aspect.ratio = 1)
+  ggtitle("UT CapMetro Rides: Boardings by Temperature")
+ 
+# save this black background theme for another time
+ # theme(plot.background = element_rect(fill = "#000000", color = "#000000"), 
+ #        panel.background = element_rect(fill = "#444444"), 
+ #        legend.background = element_rect(fill = "#333333"),
+ #        legend.key = element_rect(fill = "#333333"),
+ #        strip.background = element_rect(fill = "#333333"),
+ #        strip.text = element_text(color = "#FFFFFF"),
+ #        panel.grid = element_line(color = "#696969"), 
+ #        text = element_text(color = "#FFFFFF"), 
+ #        aspect.ratio = 1)
 
 ggsave("boardings_temp.png", 
        path = file.path(path, "output"), 

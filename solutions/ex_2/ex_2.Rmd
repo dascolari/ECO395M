@@ -2,32 +2,49 @@
 title: "Exercise 2"
 author: "David Scolari"
 date: "2/21/2022"
-output: html_document
+output: md_document
 ---
-<style>
-    body { 
-      background-color: black;
-      color: white}
-</style>
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
 
 ```{r source, include=FALSE}
 library(here)
 path <- here()
 source(file.path(path, "code", "lib.R"))
 source(file.path(path, "code", "ex_2_1.R"))
+source(file.path(path, "code", "ex_2_2.R"))
+source(file.path(path, "code", "ex_2_3.R"))
+source(file.path(path, "code", "ex_2_4.R"))
 ```
-
-```{r boarding}
+# Problem 1
+```{r boarding hour}
 boardings_hour
+```
+The above figure shows average hourly boardings for UT Cap Metro rides over a three month period, faceted by day of the week. Daily trends look similar accross all weekdays, with a peak around 4-5 PM. However, weekend boardings are much lower than weekdays and do not have a sharp peak. Boardings on Mondays in September look lower compared to other days and months because Labor Day is a day off from school, so there is one less Monday in September where students are on campus. Similarly, boardings on Weds/Thurs/Fri in November look lower likely due to the Thanksgiving holiday.
+```{r boarding temp}
 boardings_temp
 ```
+In the above figure, each facet plots UT CapMetro boardings by temperature on weekdays and weekends. Holding hour of day and weekend status constant, temperature does NOT seem to have a noticeable effect on the number of UT students riding the bus. This is seen by the relatively flat trends across all hours. A very slight upward trend might be present in the early morning hours as well as the late night hours, but it is very slight and likely insignificant. Demand for the bus on UT does not appear to respond to changes in temperature. 
+# Problem 2
+```{r saratoga houses}
+fit
+```
 
-![CAPTION HERE: Give the figure an informative caption in which you explain what is shown in the figure and address the following questions, citing evidence from the figure. Does the hour of peak boardings change from day to day, or is it broadly similar across days? Why do you think average boardings on Mondays in September look lower, compared to other days and months? Similarly, why do you think average boardings on Weds/Thurs/Fri in November look lower?](`r file.path(path, "output", "boardings_hour.png")`)
+# Problem 3
+```{r default}
+confusion_default_logit
+```
 
-![CAPTION HERE: Give the figure an informative caption in which you explain what is shown in the figure and answer the following question, citing evidence from the figure. When we hold hour of day and weekend status constant, does temperature seem to have a noticeable effect on the number of UT students riding the bus?](`r file.path(path, "output", "boardings_temp.png")`)
+# Problem 4
+```{r hotels}
+performance_matrix
+roc_curve
+hotels_20fold_bar
+hotels_val_20fold
+```
+
+
 
 
